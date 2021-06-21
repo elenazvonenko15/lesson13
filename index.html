@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script>
+		// 1
+
+		function getSum() {
+			let result = 0;
+			
+			return function(num) {
+				return result += num;
+			}		
+		}
+
+		const sum = getSum();
+		
+		console.log(sum(3));
+		console.log(sum(5));
+		console.log(sum(20));
+
+
+		// 2
+
+		function createCounter(start = 0, step = 1) {
+			function counter() {
+				let currentValue = start;
+				start += step;
+				return currentValue;
+			}
+
+			counter.reset = () => {
+				start = 0;
+				step = 1;
+			}
+
+			return counter;
+		}
+
+		const newCounter = createCounter(6, 2);
+		console.log(newCounter());
+		console.log(newCounter());
+		newCounter.reset()
+		console.log(newCounter());
+		console.log(newCounter());
+		console.log(newCounter());
+
+	</script>
+</body>
+</html>
